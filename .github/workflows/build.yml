@@ -74,20 +74,6 @@ jobs:
             -authenticationKeyID ${ASC_KEY_ID} \
             -authenticationKeyIssuerID ${ASC_ISSUER_ID}
 
-      - name: Upload to App Store Connect
-        run: |
-          xcrun altool --upload-app \
-            -f build/export/MorimoriPhotoMaker.ipa \
-            -t ios \
-            --apiKey ${ASC_KEY_ID} \
-            --apiIssuer ${ASC_ISSUER_ID} || true
-
-          xcrun notarytool submit build/export/MorimoriPhotoMaker.ipa \
-            --key ~/private_keys/AuthKey_${ASC_KEY_ID}.p8 \
-            --key-id ${ASC_KEY_ID} \
-            --issuer ${ASC_ISSUER_ID} \
-            --wait || true
-
       - name: Cleanup
         if: always()
         run: rm -rf ~/private_keys

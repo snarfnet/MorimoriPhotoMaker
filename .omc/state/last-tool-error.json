@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cd /c/Users/Windows/asc-automation && TOKEN=$(node -e \\\"const jwt=require('jsonwebtoken'),fs=require('fs');const key=fs.readFileSync('AuthKey_WDXGY9WX55.p8','utf8');console.log(jwt.sign({}...",
+  "error": "Exit code 3",
+  "timestamp": "2026-05-26T08:28:17.917Z",
+  "retry_count": 3
+}
