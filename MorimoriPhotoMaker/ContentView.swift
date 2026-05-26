@@ -583,11 +583,13 @@ private struct StageView<PhotoPicker: View>: View {
                 }
                 let displaySize = layer.displaySize(in: stageSize, imageSize: image.size)
                 let center = CGPoint(x: stageSize.width * layer.position.x, y: stageSize.height * layer.position.y)
-                let radians = -layer.rotation.degrees * .pi / 180
+                let radians = CGFloat(-layer.rotation.degrees * .pi / 180)
                 let translated = CGPoint(x: point.x - center.x, y: point.y - center.y)
+                let cosR = CoreGraphics.cos(radians)
+                let sinR = CoreGraphics.sin(radians)
                 var local = CGPoint(
-                    x: translated.x * cos(radians) - translated.y * sin(radians),
-                    y: translated.x * sin(radians) + translated.y * cos(radians)
+                    x: translated.x * cosR - translated.y * sinR,
+                    y: translated.x * sinR + translated.y * cosR
                 )
                 if layer.isFlipped {
                     local.x *= -1
